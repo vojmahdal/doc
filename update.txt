@@ -1,57 +1,63 @@
-#!/bin/bash
-set -e
+Ano, přesně tak.
 
-echo "=== Update system ==="
-sudo apt update
+Ten layer není součástí Real-Time Edge manifestu, takže pokud jsi postupoval podle předchozího návodu, adresář ../recipes-cachepartition zatím neexistuje.
 
-echo "=== Install Yocto dependencies ==="
-sudo apt install -y \
-    gawk \
-    wget \
-    git \
-    git-lfs \
-    diffstat \
-    unzip \
-    texinfo \
-    gcc \
-    build-essential \
-    chrpath \
-    socat \
-    cpio \
-    python3 \
-    python3-pip \
-    python3-pexpect \
-    python3-git \
-    python3-jinja2 \
-    python3-subunit \
-    xz-utils \
-    zstd \
-    lz4 \
-    file \
-    locales \
-    iputils-ping \
-    xterm \
-    rsync \
-    bc \
-    bison \
-    flex \
-    libssl-dev \
-    libelf-dev \
-    libncurses-dev \
-    device-tree-compiler \
-    repo
+Nejdříve si ověř obsah workspace:
 
-echo "=== Configure locale ==="
-sudo locale-gen en_US.UTF-8
+find . -maxdepth 2 -type d | grep cache
 
-echo "=== Setup Git ==="
-git config --global core.editor vim
 
-echo
-echo "Installation finished."
-echo
-echo "Check:"
-echo "  repo --version"
-echo "  git --version"
-echo "  python3 --version"
-``
+Pokud nic nenajdeš, naklonuj repository:
+
+cd ~/yocto-real-time-edge
+
+git clone -b lf-6.12.20-2.0.0 \
+https://github.com/nxp-imx-support/recipes-cachepartition.git
+
+
+Pak zkontroluj:
+
+ls recipes-cachepartition
+
+
+Měl bys vidět něco jako:
+
+imx-atf
+linux-imx
+usecache
+README.md
+
+
+Potom přidej layer:
+
+cd build-imx95
+
+bitbake-layers add-layer ../recipes-cachepartition
+
+
+Pokud dostaneš:
+
+Specified layer directory does not contain a conf/layer.conf file
+
+
+tak je zde další problém:
+
+recipes-cachepartition totiž není klasický Yocto meta-layer. Podle obsahu repozitáře jde spíše o kolekci patchů a receptů pro AN14474 než o plnohodnotný layer. Webová dokumentace NXP uvádí pouze, že repozitář obsahuje implementaci cache partitioningu pro Linux a ATF, nikoliv že jej lze přímo přidat přes bitbake-layers add-layer.
+
+V tom případě bych potřeboval vidět obsah:
+
+tree -L 2 recipes-cachepartition
+
+
+nebo
+
+find recipes-cachepartition -maxdepth 2 -type f
+
+
+Protože je dost možné, že pro Real-Time Edge bude potřeba:
+
+vytvořit vlastní meta-cachepartition,
+převzít .bbappend soubory z repozitáře,
+nebo aplikovat patch přímo do linux-imx a imx-atf.
+
+Tohle je mimochodem přesně ten bod, kde AN14474 bývá nejasná. Nejdřív bych ověřil strukturu repozitáře a podle toho navrhl správnou integraci do nxp-image-real-time-edge.
