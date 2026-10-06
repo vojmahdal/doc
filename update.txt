@@ -1,1 +1,54 @@
-powershell -NoProfile -Command "$w = New-object -ComObject WScript.Shell; while ($true) { $w.SendKeys('%%{TAB}'); Start-Sleep -Seconds 10 }"
+  /home/user/Desktop/yocto-real-time-edge/meta-cachepartition/recipes-bsp/imx-atf/files/aarch64
+    /home/user/Desktop/yocto-real-time-edge/sources/meta-imx/meta-imx-bsp/recipes-bsp/imx-atf/imx-atf-2.14+git/aarch64
+    /home/user/Desktop/yocto-real-time-edge/sources/meta-imx/meta-imx-bsp/recipes-bsp/imx-atf/imx-atf/aarch64
+    /home/user/Desktop/yocto-real-time-edge/sources/meta-imx/meta-imx-bsp/recipes-bsp/imx-atf/files/aarch64
+    /home/user/Desktop/yocto-real-time-edge/sources/meta-real-time-edge/dynamic-layers/imx-layer/recipes-bsp/imx-atf/files/
+    /home/user/Desktop/yocto-real-time-edge/meta-cachepartition/recipes-bsp/imx-atf/files/
+    /home/user/Desktop/yocto-real-time-edge/sources/meta-imx/meta-imx-bsp/recipes-bsp/imx-atf/imx-atf-2.14+git/
+    /home/user/Desktop/yocto-real-time-edge/sources/meta-imx/meta-imx-bsp/recipes-bsp/imx-atf/imx-atf/
+    /home/user/Desktop/yocto-real-time-edge/sources/meta-imx/meta-imx-bsp/recipes-bsp/imx-atf/files/
+DEBUG: Using /home/user/Desktop/yocto-real-time-edge/sources/meta-real-time-edge/dynamic-layers/imx-layer/recipes-bsp/imx-atf/files/0011-plat-imx93-add-platform-API-plat_core_mpidr_by_idx.patch for 0011-plat-imx93-add-platform-API-plat_core_mpidr_by_idx.patch
+NOTE: Applying patch '0001-imx9-Add-SMC-calls-for-L3-cache-partitioning.patch' (../meta-cachepartition/recipes-bsp/imx-atf/files/0001-imx9-Add-SMC-calls-for-L3-cache-partitioning.patch)
+NOTE: --- Patch fuzz start ---
+Applying patch 0001-imx9-Add-SMC-calls-for-L3-cache-partitioning.patch
+patching file services/std_svc/std_svc_setup.c
+Hunk #1 succeeded at 1 with fuzz 2.
+Hunk #2 succeeded at 29 (offset 1 line).
+Hunk #3 succeeded at 242 with fuzz 2 (offset 22 lines).
+
+Now at patch 0001-imx9-Add-SMC-calls-for-L3-cache-partitioning.patch
+
+--- Patch fuzz end ---
+NOTE: Applying patch '0001-feat-gicv3-add-APIs-for-clearing-pending-interrupts.patch' (../sources/meta-real-time-edge/dynamic-layers/imx-layer/recipes-bsp/imx-atf/files/0001-feat-gicv3-add-APIs-for-clearing-pending-interrupts.patch)
+NOTE: Applying patch '0002-fix-bl31-add-workaround-for-irq-losing-in-case-of-pe.patch' (../sources/meta-real-time-edge/dynamic-layers/imx-layer/recipes-bsp/imx-atf/files/0002-fix-bl31-add-workaround-for-irq-losing-in-case-of-pe.patch)
+NOTE: Applying patch '0003-feat-imx93-add-common-interrupt-handler-and-enable-i.patch' (../sources/meta-real-time-edge/dynamic-layers/imx-layer/recipes-bsp/imx-atf/files/0003-feat-imx93-add-common-interrupt-handler-and-enable-i.patch)
+NOTE: Applying patch '0004-feat-imx-add-SIP-cpu_off-service-for-imx93.patch' (../sources/meta-real-time-edge/dynamic-layers/imx-layer/recipes-bsp/imx-atf/files/0004-feat-imx-add-SIP-cpu_off-service-for-imx93.patch)
+NOTE: Applying patch '0005-plat-imx93-change-dram-dvfs-to-use-intercore-service.patch' (../sources/meta-real-time-edge/dynamic-layers/imx-layer/recipes-bsp/imx-atf/files/0005-plat-imx93-change-dram-dvfs-to-use-intercore-service.patch)
+NOTE: Applying patch '0006-plat-imx8m-change-dram-dvfs-to-use-intercore-service.patch' (../sources/meta-real-time-edge/dynamic-layers/imx-layer/recipes-bsp/imx-atf/files/0006-plat-imx8m-change-dram-dvfs-to-use-intercore-service.patch)
+NOTE: Applying patch '0007-plat-imx8m-add-SIP-cpu_off-service.patch' (../sources/meta-real-time-edge/dynamic-layers/imx-layer/recipes-bsp/imx-atf/files/0007-plat-imx8m-add-SIP-cpu_off-service.patch)
+NOTE: Applying patch '0008-plat-imx91-change-to-use-common-interrupt-service.patch' (../sources/meta-real-time-edge/dynamic-layers/imx-layer/recipes-bsp/imx-atf/files/0008-plat-imx91-change-to-use-common-interrupt-service.patch)
+NOTE: Applying patch '0009-plat-imx9-add-SIP-cpu_off-service.patch' (../sources/meta-real-time-edge/dynamic-layers/imx-layer/recipes-bsp/imx-atf/files/0009-plat-imx9-add-SIP-cpu_off-service.patch)
+NOTE: Applying patch '0010-imx8mp-Set-RDC-to-level-0.patch' (../sources/meta-real-time-edge/dynamic-layers/imx-layer/recipes-bsp/imx-atf/files/0010-imx8mp-Set-RDC-to-level-0.patch)
+NOTE: Applying patch '0011-plat-imx93-add-platform-API-plat_core_mpidr_by_idx.patch' (../sources/meta-real-time-edge/dynamic-layers/imx-layer/recipes-bsp/imx-atf/files/0011-plat-imx93-add-platform-API-plat_core_mpidr_by_idx.patch)
+DEBUG: Python function patch_do_patch finished
+DEBUG: Python function do_patch finished
+DEBUG: Executing python function do_qa_patch
+ERROR: QA Issue: Fuzz detected:
+
+Applying patch 0001-imx9-Add-SMC-calls-for-L3-cache-partitioning.patch
+patching file services/std_svc/std_svc_setup.c
+Hunk #1 succeeded at 1 with fuzz 2.
+Hunk #2 succeeded at 29 (offset 1 line).
+Hunk #3 succeeded at 242 with fuzz 2 (offset 22 lines).
+
+
+The context lines in the patches can be updated with devtool:
+
+    devtool modify imx-atf
+    devtool finish --force-patch-refresh imx-atf <layer_path>
+
+Don't forget to review changes done by devtool!
+
+Patch log indicates that patches do not apply cleanly. [patch-fuzz]
+ERROR: Fatal QA errors were found, failing task.
+DEBUG: Python function do_qa_patch finished
